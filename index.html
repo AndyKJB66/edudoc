@@ -96,6 +96,13 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @keyframes point-right {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        .animate-point-right {
+            animation: point-right 1.5s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-paper-texture">
@@ -172,15 +179,22 @@
     <section id="features" class="py-24 px-6 bg-white/50">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 space-y-4">
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 relative">
                     <h2 class="text-4xl font-bold serif">核心功能</h2>
-                    <a href="https://flowin.cn/column/893f991b60ec48a2a94b4cd0c222a68b/71116b67cbb24a2c8a9141f1eab9ac5e" target="_blank" class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full border border-accent/20 text-accent hover:bg-accent hover:text-white transition-all duration-300 text-sm font-medium">
-                        <i data-lucide="help-circle" class="w-4 h-4"></i>
-                        <span>安装指南</span>
-                    </a>
+                    <div class="flex items-center group/guide">
+                        <!-- Pointing Hand Guide -->
+                        <div class="mr-2 text-accent flex items-center animate-point-right">
+                            <i data-lucide="hand" class="w-5 h-5 rotate-90"></i>
+                            <span class="ml-1 text-[10px] font-bold uppercase tracking-tighter serif hidden md:block">点此查看</span>
+                        </div>
+                        <a href="https://flowin.cn/column/893f991b60ec48a2a94b4cd0c222a68b/71116b67cbb24a2c8a9141f1eab9ac5e" target="_blank" class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full border-2 border-accent text-accent hover:bg-gray-50 hover:text-gray-800 hover:shadow-lg transition-all duration-300 text-sm font-bold bg-white">
+                            <i data-lucide="help-circle" class="w-4 h-4"></i>
+                            <span>安装指南</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
-                <p class="text-gray-500 max-w-2xl mx-auto">覆盖小学语文教学全场景，从课件制作到试卷生成，每一处细节都经过精心雕琢。</p>
+                <p class="text-gray-500 max-w-2xl mx-auto">覆盖小学语文教学办公全场景，从常规作业到试卷排版，每一处细节都经过匠心雕琢。</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
