@@ -317,9 +317,9 @@
                             <span class="font-medium">一对一远程技术支持协助</span>
                         </li>
                     </ul>
-                    <a href="https://flowin.cn/column/893f991b60ec48a2a94b4cd0c222a68b" target="_blank" class="btn-primary w-full py-5 rounded-2xl text-xl font-bold block">
+                    <button onclick="openWechat()" class="btn-primary w-full py-5 rounded-2xl text-xl font-bold block">
                         立即升级
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -724,6 +724,33 @@
         </div>
     </div>
 
+    <!-- WeChat Modal -->
+    <div id="wechatModal" class="modal px-6" onclick="closeWechat(event)">
+        <div class="bg-white rounded-[2rem] max-w-sm w-full p-10 shadow-2xl relative text-center space-y-6" onclick="event.stopPropagation()">
+            <button onclick="closeWechat()" class="absolute top-6 right-6 text-gray-400 hover:text-black transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto text-green-600">
+                <i data-lucide="message-circle" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-2xl font-bold serif">添加Andy老师</h2>
+                <p class="text-gray-500 text-sm">请添加微信进行授权升级</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-xl border border-dashed border-gray-200 relative group">
+                <span id="wechatId" class="text-2xl font-mono font-bold tracking-wider text-accent">LJQANDY6</span>
+                <button onclick="copyWechat()" class="absolute -right-2 -top-2 bg-black text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">点击上方 ID 即可复制</p>
+            <button onclick="copyWechat()" class="w-full py-4 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2">
+                <i data-lucide="user-plus" class="w-5 h-5"></i>
+                <span>复制微信号并关闭</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-gray-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
@@ -793,6 +820,25 @@
         function closeChangelog(e) {
             document.getElementById('changelogModal').classList.remove('active');
             document.body.style.overflow = ''; // Restore scroll
+        }
+
+        // WeChat Modal Logic
+        function openWechat() {
+            document.getElementById('wechatModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWechat(e) {
+            document.getElementById('wechatModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function copyWechat() {
+            const wechatId = "LJQANDY6";
+            navigator.clipboard.writeText(wechatId).then(() => {
+                alert("微信号已复制到剪贴板，请前往微信添加。");
+                closeWechat();
+            });
         }
     </script>
 </body>
